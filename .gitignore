@@ -1,0 +1,56 @@
+# -------------------------------
+# Build e dependências
+# -------------------------------
+/target/
+/build/
+/out/
+/bin/
+*.class
+*.jar
+*.war
+*.ear
+
+# -------------------------------
+# Logs
+# -------------------------------
+*.log
+
+# -------------------------------
+# Configurações locais
+# -------------------------------
+*.properties
+*.yml
+*.yaml
+
+# -------------------------------
+# IDEs
+# -------------------------------
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+nbbuild/
+dist/
+nbproject/private/
+
+# VS Code
+.vscode/
+
+# -------------------------------
+# Sistema Operacional
+# -------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------
+# Maven Wrapper (opcional)
+# -------------------------------
+.mvn/
+mvnw
+mvnw.cmd
