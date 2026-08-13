@@ -1,8 +1,14 @@
 package com.example.cliente_service.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@Builder
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,4 +22,6 @@ public class Customer {
 
     @Column(nullable = false, length = 30)
     private String phone;
+
+
 }
