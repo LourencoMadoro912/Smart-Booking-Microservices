@@ -5,6 +5,9 @@ import com.example.cliente_service.dto.CustumerDTO;
 import com.example.cliente_service.model.Customer;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -14,7 +17,7 @@ public class CustomerService {
     }
 
 
-public CustumerDTO create(CustumerDTO custumerDTO){
+public CustumerDTO createCustomer(CustumerDTO custumerDTO){
         String email=custumerDTO.getEmail().toLowerCase().trim();
 
         if (customerRepository.findByEmail(email).isPresent()){
@@ -32,12 +35,13 @@ public CustumerDTO create(CustumerDTO custumerDTO){
         return toDTO(save);
 }
 
-public CustumerDTO getCustomer(Long id){
-        Customer customer=customerRepository.findById(id).orElseThrow(
-                ()-> new RuntimeException("Custumer not found")
-        );
 
-    return  toDTO(customer);
+//Get custumer
+public List<CustumerDTO> getCustomer(Long id){
+       return customerRepository.findById(id)
+               .stream()
+               .map(this::toDTO)
+               .collect(Collectors.toList());
 }
 
 public CustumerDTO updateCustomer( Long id,CustumerDTO custumerDTO){
