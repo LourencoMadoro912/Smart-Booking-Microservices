@@ -18,6 +18,15 @@ public class UserPrincipal implements UserDetails {
         this.password=customer.getPassword();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
