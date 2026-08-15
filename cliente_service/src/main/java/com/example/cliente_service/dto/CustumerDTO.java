@@ -11,6 +11,9 @@ public class CustumerDTO {
     @NotBlank(message = "name is required")
     private String name;
 
+    @NotBlank(message = "invaid password")
+    private String password;
+
     @Email(message = "invalid email format")
     private String email;
 

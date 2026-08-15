@@ -3,18 +3,20 @@ package com.example.cliente_service.Service;
 import com.example.cliente_service.Repository.CustomerRepository;
 import com.example.cliente_service.dto.CustumerDTO;
 import com.example.cliente_service.model.Customer;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class CustomerService {
+    private final PasswordEncoder passwordEncoder;
     private final CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+
 
 
 public CustumerDTO createCustomer(CustumerDTO custumerDTO){
@@ -26,6 +28,7 @@ public CustumerDTO createCustomer(CustumerDTO custumerDTO){
 
         Customer customer=Customer.builder()
                 .name(custumerDTO.getName())
+                .password(passwordEncoder.encode(custumerDTO.getPassword()))
                 .email(custumerDTO.getEmail())
                 .phone(custumerDTO.getPhone())
                 .build();
